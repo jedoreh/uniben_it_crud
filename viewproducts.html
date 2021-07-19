@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Online Electronic Store</h2>
+            </div>
+        </div>
+        <div class="row" id="select-product">
+            <div class=".col-md-6 .offset-md-3">
+                <div class="alert alert-primary" role="alert">
+                    <p id="info"></p>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                    <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="addproduct.html">Enter New Product</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active" href="viewproducts.html">View Products</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Buy Products</a>
+                    </li>
+                
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <h3>View All Products</h3>
+            </div>
+        </div>
+
+        <div class="row" id="display">
+
+        </div>
+        
+
+
+
+    </div>
+    
+
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            var viewdata = "viewdata"
+            display_products()
+
+
+            function display_products(){
+                $.post("process.php",{viewdata: viewdata}, function(data){
+                    $("#display").html(data)
+                })
+            }
+
+
+            $(".selectproduct").on('click', function(evt){
+                var productid = $(this).attr("data-id")
+
+                console.log(productid)
+
+            })
+
+
+        })
+
+       
+
+
+
+    </script>
+</body>
+</html>
